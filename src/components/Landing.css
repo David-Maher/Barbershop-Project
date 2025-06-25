@@ -1,0 +1,43 @@
+.LandingPage,.HeroBage{
+    background-image: url(src/assets/images/Smart-pensive.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+
+}
+.SecondSection{
+     background-image: url(src/assets/images/vintage-frame-salon-tools-wooden-table-2-min1.jpg);
+     height: auto;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+}
+@media screen and (max-width:425px) {
+    .LandingPage,.HeroBage .pad{
+     padding-left: 10px;
+} 
+    .LandingPage,.HeroBage .pad .style{
+     font-size: 60px;
+    } 
+    .LandingPage,.HeroBage .pad .build{
+     font-size: 25px
+    } 
+.LandingPage,.HeroBage{
+    background-image: url(src/assets/images/Smart-pensive.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-position: right;
+     background-repeat: no-repeat;
+
+}
+.serv p{
+     text-align: center;
+     font-size: 25px;
+     font-weight: bold;
+}
+.serv {
+     padding-top: 25px;
+}
+}

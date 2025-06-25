@@ -1,0 +1,23 @@
+/* Scrollbar للكروم والسفاري وإيدج */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* خلفية الـ Scroll */
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 6px;
+}
+
+/* الإبهام (Thumb) مقسوم نصين بالطول بزاوية 180 */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b8a269 50%, #b8a269 50%, #1e1e1e 50%,);
+  border-radius: 6px;
+  border: 2px solid #1e1e1e;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b8a269 #1e1e1e;
+}

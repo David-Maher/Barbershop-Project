@@ -1,0 +1,9 @@
+   
+   .Aboutus{
+    background-image: url(src/assets/images/weby.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+    background-repeat: no-repeat;
+
+   }

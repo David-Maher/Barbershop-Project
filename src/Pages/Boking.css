@@ -1,0 +1,41 @@
+.Booking, .Hero {
+  background-image: url(src/assets/images/vintage-frame-salon-tools-wooden-table-2-min1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.rdtPicker {
+  background-color: #000 !important;
+  color: #555151 !important;
+  border: none !important;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.rdtPicker .rdtTimeToggle,
+.rdtPicker .rdtSwitch,
+.rdtPicker td,
+.rdtPicker th {
+  color: #fff !important;
+  background: none;
+}
+
+.rdtPicker .rdtActive,
+.rdtPicker .rdtActive:hover {
+  background-color: #b8a269 !important;
+  border-radius: 4px;
+  color: #000 !important;
+}
+
+.rdtPicker td.rdtToday:before {
+  border-bottom-color: #b8a269 !important;
+}
+.scroll{
+ color: #b8a269; 
+}

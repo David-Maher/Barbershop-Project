@@ -1,0 +1,60 @@
+/* src/components/SplashScreen.css */
+
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* فوق كل حاجة */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; /* شيل الخلفية البيضاء */
+  pointer-events: none; /* عشان ميمنعش الضغط تحتو */
+}
+
+.top-pane,
+.bottom-pane {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  transition: transform 1s ease;
+  z-index: 1;
+}
+
+.top-pane {
+  top: 0;
+  background-color: #b8a269;
+}
+
+.bottom-pane {
+  bottom: 0;
+  background-color: #000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.splash-container.animate .top-pane {
+  transform: translateY(-100%);
+}
+
+.splash-container.animate .bottom-pane {
+  transform: translateY(100%);
+}
+
+.splash-container.animate .logo {
+  opacity: 0;
+}

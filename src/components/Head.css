@@ -1,0 +1,26 @@
+.lin .tex{
+   color: #b8a269 ;
+}
+ul, li{
+    color: white;
+}
+.Pag:hover{
+     color: #b8a269;
+}
+.navbar-end .Book{
+     background: #b8a269;
+}
+.menu-horizontal {
+    :where(& > li:not(.menu-title) > details > ul) {
+        border-radius: var(--radius-box);
+        background-color: #b8a269;
+    }
+}
+@media screen and (max-width: 425px) {
+    .navbar-end :link{
+        width: 130px;
+    }
+    .navbar-end{
+        padding-right: 15px;
+    }
+}

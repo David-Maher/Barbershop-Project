@@ -1,0 +1,81 @@
+
+.HomePage{
+    background-image: url(src/assets/images/client-doing-hair-cut-2-min.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+    background-repeat: no-repeat;
+
+}
+.image .Gold{
+   color:  #b8a269; 
+}
+.image .lin{
+    background-color: #b8a269;
+}
+.back{
+background-image: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 26, 1));}
+.butt .bot{
+         background: #b8a269;
+}
+
+.phot .saeed{
+    color: #b8a269;
+}
+@media screen and (max-width:425px) {
+    .mockup{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.HomePage{
+    padding: 12px;
+}
+.HomePage .saeed {
+ font-size: 60px;
+}
+.HomePage .fontssaed {
+ font-size: 20px;
+}
+
+.secondphoto{
+    height: 250px;
+}
+.intruduse{
+    width: 385px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.w-\[600px\] {
+    width: 400px;
+}
+    .mockup p{
+      transform: rotate(90deg);
+    }
+    .maxen .store{
+         transform: rotate(0deg);
+    }
+    .maxen{
+        width: 355px;
+    }
+    .Saed p{
+    font-size: 50px;
+    }
+    .mockup-phone{
+        width: 375px;
+    }
+    .videos{
+        
+    }
+
+}
+@media screen and (max-width:375px) {
+     .mockup{
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+}   
+.Saed p{
+    font-size: 45px;
+}
+}

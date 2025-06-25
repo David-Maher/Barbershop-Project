@@ -1,0 +1,126 @@
+.Servies, .Heros{
+    background-image: url(src/assets/images/male-hairdresser-shakin.jpg);
+     height: 90vh;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+}     
+.First{
+    background-image: url(src/assets/images/cosmetic-male-beauty-products-wi.jpg);
+    background-position: center;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+}
+.Second{
+    background-image: url(src/assets/images/tools-profession-hairdresser_23.jpg);
+    background-position: center;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+}
+.Third{
+    background-image: url(src/assets/images/56346.jpg);
+    background-position: top;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+}
+
+@media screen and (max-width:768px) {
+    .PHOTO{
+        width: 768px;
+    }
+}
+@media screen and (max-width:425px) {
+    .ther{
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+    }
+    .sec{
+        width: 420px;
+    }
+}
+@media screen and (max-width:375px) {
+    .ther{
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+    }
+}
+@media screen and (max-width:320px) {
+    .ther{
+    display: flex;
+    flex-direction: column;
+    max-width: 318px;
+    }
+}
+@media screen and (max-width:320px) {
+    .Servies .serv{
+        font-size: 55px;
+    }
+}
+@media screen and (max-width:1440px) {
+    .PHOTO{
+        width: 650px;
+    }
+}
+@media screen and (max-width:768px) {
+    .ther{
+    display: flex;
+    flex-direction: column;
+    width: 425px;
+    }
+}
+@media screen and (min-width:312px) {
+    .ther{
+    display: flex;
+    flex-direction: column;
+    max-width: 315px;
+    }
+}
+@media screen and (max-width:320px) {
+    .serv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 380px;
+    }
+}
+@media screen and (max-width:425px) {
+
+.First{
+    background-image: url(src/assets/images/cosmetic-male-beauty-products-wi.jpg);
+    background-position: center;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+    width: 410px;
+    height: 425px;
+}
+.Second{
+    background-image: url(src/assets/images/tools-profession-hairdresser_23.jpg);
+    background-position: center;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+    width: 410px;
+    height: 425px;
+
+}
+.Third{
+    background-image: url(src/assets/images/56346.jpg);
+    background-position: top;
+    display: flex;
+    align-items: end;
+    padding: 50px;
+    width: 410px;
+    height: 425px;
+
+}
+
+}
+
+
+
