@@ -4,6 +4,7 @@
      width: auto;
      object-fit: cover;
      background-repeat: no-repeat;
+
 }     
 .First{
     background-image: url(src/assets/images/cosmetic-male-beauty-products-wi.jpg);
@@ -89,7 +90,19 @@
     }
 }
 @media screen and (max-width:425px) {
+.Servies, .Heros{
+    background-image: url(src/assets/images/male-hairdresser-shakin.jpg);
+     height: 90vh;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+     background-position: 60%;
+     background-position-y: 20%;
 
+}  
+.ser .serv{
+    font-size: 50px;
+}   
 .First{
     background-image: url(src/assets/images/cosmetic-male-beauty-products-wi.jpg);
     background-position: center;
@@ -121,6 +134,13 @@
 }
 
 }
+@media (max-width: 768px) {
+  .Servies .Heros{
+    background-position: center top;
+    background-position-y: left;
+  }
+}
+
 
 
 

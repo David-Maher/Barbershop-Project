@@ -1,0 +1,31 @@
+.ContactUs{
+    background-image: url(src/assets/images/man-getting-his-hair-trimmed-with-trimmer4-min.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-position: center;
+    background-repeat: no-repeat;
+}
+ .sora2{
+        background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+        height: 85vh;
+    background-position-x: 85%;
+    background-position-y: 10%;
+     width: auto;
+    }
+    @media screen and (max-width:768px) {
+ .sora2{
+    background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+    height: 85vh;
+    background-position: 15%;
+     width: auto;
+    }       
+    }
+    @media screen and (max-width:320px) {
+ .sora2{
+    background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+    height: 85vh;
+    background-position: 25%;
+     width: auto;
+    }       
+    }

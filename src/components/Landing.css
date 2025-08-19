@@ -14,6 +14,7 @@
      background-repeat: no-repeat;
 }
 @media screen and (max-width:425px) {
+     
     .LandingPage,.HeroBage .pad{
      padding-left: 10px;
 } 
@@ -23,7 +24,7 @@
     .LandingPage,.HeroBage .pad .build{
      font-size: 25px
     } 
-.LandingPage,.HeroBage{
+.LandingPage, .HeroBage{
     background-image: url(src/assets/images/Smart-pensive.jpg);
      height: 85vh;
      width: auto;
@@ -39,5 +40,16 @@
 }
 .serv {
      padding-top: 25px;
+}
+}
+@media screen and (max-width:425px) {
+     .LandingPage, .HeroBage{
+    background-image: url(src/assets/images/Smart-pensive.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+ background-position:75%;
+     background-position-y: 20%
 }
 }

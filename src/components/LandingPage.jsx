@@ -10,7 +10,7 @@ export default function LandingPage() {
   return (
    <>
    <div className='LandingPage HeroBage flex  justify-start items-center  '>
-      <div className='pad px-40'>
+      <div className='pad px-20'>
       <p className=' style text-white text-8xl font-bold'>Your Style<br/>
       Starts Here</p>
       <p className='build text-white text-2xl mt-7'>

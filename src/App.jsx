@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './Pages/HomePage';
@@ -15,6 +15,23 @@ import LandingPage from './components/LandingPage';
 import Servies from './Pages/Servies';
 import Prices from './Pages/Prices';
 import SplashScreen from './components/SplashScreen';
+import AdminLogin from './Pages/AdminLogin';
+import AdminDashboard from './Admin-component/AdminDashboard';
+import Dashpoard from './Admin-component/Dashpoard';
+
+// كمبوننت علشان نخفي الهيدر والفوتر في صفحات معينة
+function LayoutWrapper({ children }) {
+  const location = useLocation();
+  const hideLayout = location.pathname.startsWith('/Dashboard');
+
+  return (
+    <>
+      {!hideLayout && <Header />}
+      {children}
+      {!hideLayout && <Footer />}
+    </>
+  );
+}
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -22,22 +39,22 @@ export default function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/HomePage' element={<HomePage />} />
-          <Route path='/About' element={<AboutUs />} />
-          <Route path='/ContactUs' element={<ContactUs />} />
-          <Route path='/Booking' element={<Booking />} />
-          <Route path='/Barbers' element={<OurBarbers />} />
-          <Route path='/Landing-Page' element={<LandingPage />} />
-          <Route path='/services' element={<Servies />} />
-          <Route path='/Prices' element={<Prices />} />
-          <Route path='/*' element={<ErrorPage />} />
-        </Routes>
-        <Footer />
+        <LayoutWrapper>
+          <Routes>
+            <Route path='/HomePage' element={<HomePage />} />
+            <Route path='/About' element={<AboutUs />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/Booking' element={<Booking />} />
+            <Route path='/Barbers' element={<OurBarbers />} />
+            <Route path='/Landing-Page' element={<LandingPage />} />
+            <Route path='/services' element={<Servies />} />
+            <Route path='/Prices' element={<Prices />} />
+            <Route path='/Admin' element={<AdminLogin />} />
+            <Route path='/Dashboard' element={<AdminDashboard />} />
+            <Route path='/*' element={<ErrorPage />} />
+          </Routes>
+        </LayoutWrapper>
       </BrowserRouter>
-
-      {/* Splash Screen يظهر فوق الموقع */}
       {loading && <SplashScreen onFinish={() => setLoading(false)} />}
     </div>
   );

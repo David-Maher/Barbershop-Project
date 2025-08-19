@@ -1,9 +1,20 @@
 import { Link, Links } from 'react-router-dom'
 import './Head.css'
 import { useState } from 'react'
+import { RiLoginCircleLine } from "react-icons/ri";
+
 export default function Header() {
+  const [Isopen, setIsopen] = useState(true)
   return (
     <>
+    {
+      Isopen && (
+        <div className='bar items-center justify-center gap-15 flex bg-[#b8a269] '>
+            <p className=' capitalize p-2 font-bold text-white'>get your first diss 20% when Booking</p>
+          <button className='text-white  cursor-pointer font-bold' onClick={()=>setIsopen(false)}>x</button>
+        </div>
+      )
+    }
     <div className='Header'>
     <div className="navbar shadow-sm bg-black text-white">
   <div className="navbar-start">
@@ -18,6 +29,9 @@ export default function Header() {
       <Link to={"/Landing-Page"}>LandingPage</Link>    
       <Link to={"/services"}>services</Link>    
       <Link to={"/Prices"}>pricing</Link>    
+      <Link to={"/About"}>About us</Link>    
+      <Link to={"/ContactUs"}>ContactUs</Link>    
+
       </ul>
     </div>
     <div className='lin items-center'>
@@ -40,7 +54,9 @@ export default function Header() {
       <Link to={"/Landing-Page"}>LandingPage</Link>    
       <Link to={"/services"}>services</Link>    
       <Link to={"/Booking"}>Make An Appointment</Link>    
-      <Link to={"/Prices"}>pricing</Link>    
+      <Link to={"/Prices"}>pricing</Link>  
+      <Link to={"/Barbers"}>OurBarbers</Link>  
+        
             </li>
           </ul>
         </details>
@@ -52,6 +68,11 @@ export default function Header() {
   </div>
   <div className="navbar-end pr-10 text-[15px] ">
       <Link className='Book lg:text-[15px] sm:text-[22px] sm:p-[10px] rounded-bl-md rounded-tr-md w-auto h-auto pl-5 pr-5 text-center' to={"/Booking"}>Book an appointment</Link>    
+  </div>
+  <div className='pr-5'>
+    <Link to={"/Admin"}>
+    <RiLoginCircleLine className='text-2xl cursor-pointer'/>
+    </Link>
   </div>
 </div>
     </div>

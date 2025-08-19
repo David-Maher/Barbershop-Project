@@ -5,5 +5,75 @@
      width: auto;
      object-fit: cover;
     background-repeat: no-repeat;
+   }
+   .but:hover{
+      scale: 1.1;
+   }
+   .but{
+      transition:  .3s ease-out ;
+   }
+#social {
+  transition: transform 0.1s ease-in;
+}
+#social:hover {
+  transform: scale(1.3);
+}
+
+#Phot {
+  transition: transform 0.3s ease-out;
+}
+
+#Phot:hover {
+  transform: scale(1.1);
+}
+   @media screen and (max-width:768px) {
+      .parent, .card, .card-body{
+      width: 770px;
+      }
+   }
+      @media screen and (max-width:425px) {
+      .parent, .card, .card-body{
+      display: flex;
+      flex-direction: column;
+      width:425px;
+      }
+      .tex .welcome{
+        font-size: 25px; 
+      }
+      .makes{
+         width: 410px;
+      }
+      .Aboutus{
+    background-image: url(src/assets/images/weby.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-position: 35%;
+    background-repeat: no-repeat;
+   }
+   .Aboutus .apout{
+      font-size: 40px;
+   }
+   .Aboutus .bulid{
+      font-size: 30px;
+      font-weight: normal;
+   }
+   .UScont .make {
+      font-size: 22px;
+      font-weight: bold;
+   }
+   .UScont .Super {
+      font-size: 20px;
+   }
+   .makes p{
+
+      font-size: 20px;
+   }
+         .bar{
+         width: 425px;
+         display: flex;
+         justify-content:center;
+         align-items: center;
+      }
 
    }

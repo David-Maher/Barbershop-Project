@@ -27,6 +27,19 @@ background-image: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 2
     display: flex;
     flex-direction: column;
     width: 400px;
+
+}
+.h-full {
+    height: 100%;
+    width: 100%;
+}
+
+video.videos{
+display: flex;
+justify-content: center;
+    width: 660px;
+height: max-content;
+
 }
 .HomePage{
     padding: 12px;
@@ -42,7 +55,7 @@ background-image: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 2
     height: 250px;
 }
 .intruduse{
-    width: 385px;
+    width: 355px;
     padding-top: 20px;
     padding-bottom: 10px;
 }
@@ -64,11 +77,9 @@ background-image: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 2
     .mockup-phone{
         width: 375px;
     }
-    .videos{
-        
-    }
 
 }
+
 @media screen and (max-width:375px) {
      .mockup{
     display: flex;
@@ -78,4 +89,84 @@ background-image: linear-gradient(to bottom, rgba(26, 26, 26, 1), rgba(26, 26, 2
 .Saed p{
     font-size: 45px;
 }
+    .mockup{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+}
+.h-full {
+    height: 100%;
+    width: 100%;
+}
+
+video.videos{
+display: flex;
+justify-content: center;
+    width: 660px;
+height: max-content;
+
+}
+.HomePage{
+    padding: 12px;
+}
+
+.secondphoto{
+    height: 250px;
+}
+.intruduse{
+    width: 350px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.w-\[600px\] {
+    width: 400px;
+}
+}
+@media screen and (max-width:425px) {
+    .intruduse{
+    max-width: 380px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.phot .saeed{
+ font-size: 40px;
+}
+.phot .fontssaed{
+    font-size: 17px;
+} 
+.butt{
+    
+}
+.intruduse .shshop{
+    width: 380px;
+}
+}
+
+@media screen and (max-width:768px) {
+  .intruduse{
+    width: 585px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.phot{
+    padding-right: 20%;
+}
+.saeed{
+    font-size: 60px;
+}
+
+  .intruduse .shshop{
+    width: 385px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+
+}
+}
+@media screen and (max-width:1024px) {
+.tazbet{
+width: 90%;
+}  
 }

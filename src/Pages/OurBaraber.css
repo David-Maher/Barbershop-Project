@@ -1,0 +1,19 @@
+.OurBarbers{
+    background-image: url(./src/assets/images/man-barbershop-salon-doing-haircut-beard-trim1-min.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+    background-repeat: no-repeat;
+
+}
+@media screen and (max-width:425px ) {
+.OurBarbers{
+    background-image: url(./src/assets/images/man-barbershop-salon-doing-haircut-beard-trim1-min.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-position: 61%;
+    background-repeat: no-repeat;
+
+}    
+}

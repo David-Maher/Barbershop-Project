@@ -4,6 +4,53 @@ import React, { useRef } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
+import 'swiper/css'
+import 'swiper/css/navigation'
+const barbers = [
+  {
+    name: 'Ahmed Adel',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+  {
+    name: 'Hassan Ali',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+  {
+    name: 'Mostafa Khaled',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+  {
+    name: 'Ali Samir',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+  {
+    name: 'Omar Mohamed',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+  {
+    name: 'Saeid Rabie',
+    img: '/src/assets/images/46346.jpg',
+    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
+    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
+    twitter: 'https://x.com/saeid_rabie?lang=ar',
+  },
+]
+
 
 const timelineData = [
   {
@@ -53,37 +100,56 @@ export default function AboutUs() {
   return (
     <>
       {/* Section: About Us */}
-      <div className="Aboutus flex justify-center items-center bg-black py-16">
-        <div className="flex-col text-center px-4">
-          <p className="text-white text-7xl font-bold">About Us</p>
-          <p className="text-white mt-5 font-medium text-3xl">
+      <div  className="Aboutus flex justify-center items-center bg-black py-16">
+        <div data-aos-duration="1500" data-aos="fade-left" className="flex-col text-center px-4">
+          <p className="apout text-[#b8a269] text-7xl font-bold">About Us</p>
+          <p className=" bulid text-white mt-5 font-medium text-4xl">
             We build our passion for the art of barbering through <br /> our commitment to our customers.
           </p>
-          <div className="mt-10 flex justify-center">
-            <Link
-              className="text-2xl font-bold p-2 rounded-bl-md rounded-tr-md text-white bg-[#b8a269]"
-              to={"/Booking"}
-            >
-              Book an appointment
-            </Link>
-          </div>
+<div  className="mt-10 flex justify-center">
+  <Link
+    to="/Booking"
+    className="relative inline-flex h-12 active:scale-95 transition overflow-hidden rounded-lg p-[2px] focus:outline-none"
+  >
+    <span
+      className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#b8a269_0%,#ffffff_50%,#b8a269_100%)]"
+    ></span>
+    <span
+      className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-[#b8a269] px-7 text-sm font-bold text-white backdrop-blur-3xl gap-2"
+    >
+      Book an appointment
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        strokeWidth="0"
+        viewBox="0 0 448 512"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-white"
+      >
+        <path d="M429.6 92.1c4.9-11.9 2.1-25.6-7-34.7s-22.8-11.9-34.7-7l-352 144c-14.2 5.8-22.2 20.8-19.3 35.8s16.1 25.8 31.4 25.8H224V432c0 15.3 10.8 28.4 25.8 31.4s30-5.1 35.8-19.3l144-352z"></path>
+      </svg>
+    </span>
+  </Link>
+</div>
         </div>
       </div>
 
       {/* Section: Welcome + Info */}
-      <div className="bg-[#1a1a1a] py-14 px-5">
-        <p className="text-center text-white text-6xl">
+      <div  className="tex bg-[#1a1a1a] py-14 px-5">
+        <p   data-aos-duration="1500"  data-aos="fade-left" className="welcome text-center text-white text-6xl">
           Welcome to the Best <br /> Barbershop in Egypt
         </p>
 
         <div className="parent mt-14 flex flex-col md:flex-row justify-center items-center gap-10">
-          <img
-            className="h-96 rounded-lg object-cover"
+          <img   data-aos-duration="1500"  data-aos="fade-right" 
+            className="bar h-96 rounded-lg"
             src="/src/assets/images/handsome-man-cutting-beard-barber-4.jpg"
             alt="barber"
           />
 
-          <div className="text-white max-w-xl">
+          <div  data-delay="1900" data-aos-duration="1900"  data-aos="fade-left" className="text-white max-w-xl">
             <Link
               to={"/ContactUs"}
               className="text-2xl font-bold text-[#b8a269]"
@@ -102,35 +168,36 @@ export default function AboutUs() {
                 <p className="text-2xl">10:00 to 3:00</p>
               </div>
             </div>
-            <p className="mt-5 text-2xl font-extralight">
+            <div className='makes'>
+              <p className="mt-5 text-2xl font-extralight">
               Comprehensive Barber Services / Gift Packages / Unique Grooming Products / Juniper / Crafted
-              <br />
-              Cocktails / Visa / MasterCard.
+              Cocktails / Visa / <br/> MasterCard.
             </p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Section: Timeline Carousel */}
-      <div className="bg-[#1a1a1a] py-10 relative overflow-hidden">
-                    <p className=" mb-7 text-center text-white font-bold text-5xl">Our Story</p>
+      <div  className="bg-[#1a1a1a] py-10 relative overflow-hidden">
+                    <p  data-aos-duration="1900"  data-aos="fade-left"  className=" mb-7 text-center text-white font-bold text-5xl">Our Story</p>
 
         {/* Arrows */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 z-5 -translate-y-1/2 bg-[#b8a269] w-10 h-10 rounded-full flex items-center justify-center text-black"
+          className=" cursor-pointer absolute left-2 top-1/2 z-5 -translate-y-1/2 bg-[#b8a269] w-10 h-10 rounded-full flex items-center justify-center text-black"
         >
           ❮
         </button>
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 z-5 -translate-y-1/2 bg-[#b8a269] w-10 h-10 rounded-full flex items-center justify-center text-black"
+          className="  cursor-pointer absolute right-2 top-1/2 z-5 -translate-y-1/2 bg-[#b8a269] w-10 h-10 rounded-full flex items-center justify-center text-black"
         >
           ❯
         </button>
 
         {/* Scrollable Content  #1a1a1a */}
-        <div
+        <div  data-delay="1900" data-aos-duration="1900"  data-aos="fade-left" 
           ref={scrollRef}
           className="flex gap-10 overflow-x-auto scroll-smooth px-20 scrollbar-hide"
         >
@@ -146,23 +213,25 @@ export default function AboutUs() {
         </div>
       </div>
       <div className='bg-[#333333] h-auto py-5'>
-        <p className='text-white text-2xl text-center'>
+        <div className='UScont'>
+        <p data-aos-duration="1500"  data-aos="fade-left" className= 'make text-white text-2xl text-center'>
           WE CAN MAKE YOUR AWESOMENESS
         </p>
-        <p className='text-white text-5xl mt-5 mb-5 text-center'>
+        <p data-aos-duration="1500"  data-aos="fade-left" className='Super text-white text-5xl mt-5 mb-5 text-center'>
           Super Professional Barbers
         </p>
-        <div> 
+        </div>
+                <div> 
         {/* card */}
-        <div className='flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap '>
-        <div className="card bg-base-100 w-96 shadow-sm">
+        <div className='parent flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap '>
+<div  data-aos-duration="1500"  data-aos="fade-left"  className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Owner</h2>
     <p className='text-[20px] font-bold'>Saeed Rabee</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a     id="social"       href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a     id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a     id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
     </div>
   </div>
   <figure>
@@ -171,14 +240,14 @@ export default function AboutUs() {
       alt="Saeed Rabee" />
   </figure>
 </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Ahmed Adel</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"       href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"       href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
     </div>
   </div>
@@ -188,14 +257,14 @@ export default function AboutUs() {
       alt="Shoes" />
   </figure>
 </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Alaa Mohamed</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
     </div>
   </div>
@@ -205,14 +274,14 @@ export default function AboutUs() {
       alt="Shoes" />
   </figure>
 </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Mohamed saeed</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
     </div>
   </div>
@@ -222,31 +291,15 @@ export default function AboutUs() {
       alt="" />
   </figure>
 </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Ramy Ahmed</p>
   <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/one (3).webp"
-      alt="Shoes" />
-  </figure>
-</div>
-        <div className="card bg-base-100 w-96 shadow-sm">
-  <div className="card-body">
-    <h2 className="card-title  text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Karem Mostafa</p>
-        <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
     </div>
   </div>
   <figure>
@@ -255,16 +308,31 @@ export default function AboutUs() {
       alt="Shoes" />
   </figure>
 </div>
+<div data-aos-duration="1500"  data-aos="fade-left"  className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
+  <div  className="card-body">
+    <h2 className="card-title  text-2xl text-[#b8a269]">Barber / Stylist</h2>
+    <p className='text-[20px] font-bold'>Karem Mostafa</p>
+        <div className='flex gap-3'>
+<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+    </div>
+  </div>
+  <figure>
+    <img
+      src="/src/assets/images/452436.jpg"
+      alt="Shoes" />
+  </figure></div>
 {/*second perant card */}
-<div className='flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap md:-gap[5px]'>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div className=' parent flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap md:-gap[5px]'>
+<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269] ">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Ahmed Adel</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
     </div>
   </div>
@@ -274,14 +342,14 @@ export default function AboutUs() {
       alt="Shoes" />
   </figure>
 </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
+<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
   <div className="card-body">
     <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
     <p className='text-[20px] font-bold'>Hassan Ali</p>
     <div className='flex gap-3'>
-<a href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
     </div>
   </div>
   <figure>

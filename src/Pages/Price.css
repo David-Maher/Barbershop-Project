@@ -6,3 +6,14 @@
     background-repeat: no-repeat;
     
 }
+@media screen and (max-width:425px) {
+    .Prices{
+     background-image: url(src/assets/images/client-doing-hair-cut-2-min.jpg);
+     height: 85vh;
+     width: auto;
+     object-fit: cover;
+     background-repeat: no-repeat;
+     background-position-y: 15%;
+     background-position-x: 25%;
+}
+}
