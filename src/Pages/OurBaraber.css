@@ -1,14 +1,14 @@
 .OurBarbers{
-    background-image: url(./src/assets/images/man-barbershop-salon-doing-haircut-beard-trim1-min.jpg);
+    background-image: url(./public/images/man-barbershop-salon-doing-haircut-beard-trim1-min.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
-    background-repeat: no-repeat;
+     background-repeat: no-repeat;
 
 }
 @media screen and (max-width:425px ) {
 .OurBarbers{
-    background-image: url(./src/assets/images/man-barbershop-salon-doing-haircut-beard-trim1-min.jpg);
+    background-image: url(./public/images/man-barbershop-salon-doing-haircut-beard-trim1-min.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
@@ -17,3 +17,11 @@
 
 }    
 }
+@media screen and (max-width: 2560px) {
+    .OurBarbers{
+height: 85vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}    
+    }

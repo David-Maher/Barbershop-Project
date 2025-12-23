@@ -1,3 +1,15 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+
+  plugins: [
+    require("@midudev/tailwind-animations"),
+  ],
+}
+
 module.exports = {
   theme: {
     colors: {

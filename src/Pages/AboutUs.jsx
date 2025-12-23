@@ -6,51 +6,10 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 import 'swiper/css'
 import 'swiper/css/navigation'
-const barbers = [
-  {
-    name: 'Ahmed Adel',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-  {
-    name: 'Hassan Ali',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-  {
-    name: 'Mostafa Khaled',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-  {
-    name: 'Ali Samir',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-  {
-    name: 'Omar Mohamed',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-  {
-    name: 'Saeid Rabie',
-    img: '/src/assets/images/46346.jpg',
-    facebook: 'https://www.facebook.com/SaeidRabieMensalon',
-    instagram: 'https://www.instagram.com/saeidrabie_/?hl=ar',
-    twitter: 'https://x.com/saeid_rabie?lang=ar',
-  },
-]
-
+import { Helmet } from 'react-helmet';
+import { db } from '../Firebase';
+import { collection, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from 'react';
 
 const timelineData = [
   {
@@ -88,6 +47,10 @@ const timelineData = [
 ];
 
 export default function AboutUs() {
+  
+
+
+
   const scrollRef = useRef();
 
   const scroll = (direction) => {
@@ -97,8 +60,36 @@ export default function AboutUs() {
     }
   };
 
+ const [barbers, setBarbers] = useState([]);
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "BarbersDashboard"), (snapshot) => {
+      const data = snapshot.docs.map(doc => ({
+        id: doc.id,
+        title: doc.data().title || "No Name",
+        description: doc.data().description || "Barber / Stylist",
+        image: doc.data().image || "",
+        facebook: doc.data().facebook || "#",
+        instagram: doc.data().instagram || "#",
+        twitter: doc.data().twitter || "#"
+      }));
+      setBarbers(data);
+    });
+
+    return () => unsub();
+  }, []);
+
   return (
     <>
+        <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+        <meta name="description" content="من نحن و ما هي خدماتنا " />
+        <title>
+        من نحن ؟
+        </title>
+        <meta name="robots" content="index, follow" />
+    </Helmet>
+
       {/* Section: About Us */}
       <div  className="Aboutus flex justify-center items-center bg-black py-16">
         <div data-aos-duration="1500" data-aos="fade-left" className="flex-col text-center px-4">
@@ -136,47 +127,47 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* Section: Welcome + Info */}
-      <div  className="tex bg-[#1a1a1a] py-14 px-5">
-        <p   data-aos-duration="1500"  data-aos="fade-left" className="welcome text-center text-white text-6xl">
-          Welcome to the Best <br /> Barbershop in Egypt
-        </p>
+        {/* Section: Welcome + Info */}
+        <div  className="tex bg-[#1a1a1a] py-14 px-5">
+          <p   data-aos-duration="1500"  data-aos="fade-left" className="welcome text-center text-white text-6xl">
+            Welcome to the Best <br /> Barbershop in Egypt
+          </p>
 
-        <div className="parent mt-14 flex flex-col md:flex-row justify-center items-center gap-10">
-          <img   data-aos-duration="1500"  data-aos="fade-right" 
-            className="bar h-96 rounded-lg"
-            src="/src/assets/images/handsome-man-cutting-beard-barber-4.jpg"
-            alt="barber"
-          />
+          <div className="parent mt-14 flex flex-col md:flex-row justify-center items-center gap-10">
+            <img   data-aos-duration="1500"  data-aos="fade-right" 
+              className="bar h-96 rounded-lg"
+              src="/src/assets/images/handsome-man-cutting-beard-barber-4.webp"
+              alt="barber"
+            />
 
-          <div  data-delay="1900" data-aos-duration="1900"  data-aos="fade-left" className="text-white max-w-xl">
-            <Link
-              to={"/ContactUs"}
-              className="text-2xl font-bold text-[#b8a269]"
-            >
-              (+20) 011 10605652
-            </Link>
-            <p className="text-4xl mt-5">Working Hours</p>
-            <hr className="mt-3 w-[100px] border-t-4 border-[#b8a269] rounded" />
-            <div className="mt-5 flex flex-col gap-2">
-              <div className="flex gap-3">
-                <p className="text-2xl">Friday - Thursday</p>
-                <p className="text-2xl">10:00 to 3:00</p>
+            <div  data-delay="1900" data-aos-duration="1900"  data-aos="fade-left" className="text-white max-w-xl">
+              <Link
+                to={"/ContactUs"}
+                className="text-2xl font-bold text-[#b8a269]"
+              >
+                (+20) 011 10605652
+              </Link>
+              <p className="text-4xl mt-5">Working Hours</p>
+              <hr className="mt-3 w-[100px] border-t-4 border-[#b8a269] rounded" />
+              <div className="mt-5 flex flex-col gap-2">
+                <div className="flex gap-3">
+                  <p className="text-2xl">Friday - Thursday</p>
+                  <p className="text-2xl">10:00 to 3:00</p>
+                </div>
+                <div className="flex gap-3">
+                  <p className="text-2xl">Sunday - Friday</p>
+                  <p className="text-2xl">10:00 to 3:00</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <p className="text-2xl">Sunday - Friday</p>
-                <p className="text-2xl">10:00 to 3:00</p>
+              <div className='makes'>
+                <p className="mt-5 text-2xl font-extralight">
+                Comprehensive Barber Services / Gift Packages / Unique Grooming Products / Juniper / Crafted
+                Cocktails / Visa / <br/> MasterCard.
+              </p>
               </div>
-            </div>
-            <div className='makes'>
-              <p className="mt-5 text-2xl font-extralight">
-              Comprehensive Barber Services / Gift Packages / Unique Grooming Products / Juniper / Crafted
-              Cocktails / Visa / <br/> MasterCard.
-            </p>
             </div>
           </div>
         </div>
-      </div>
 
       {/* Section: Timeline Carousel */}
       <div  className="bg-[#1a1a1a] py-10 relative overflow-hidden">
@@ -221,146 +212,39 @@ export default function AboutUs() {
           Super Professional Barbers
         </p>
         </div>
-                <div> 
-        {/* card */}
-        <div className='parent flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap '>
-<div  data-aos-duration="1500"  data-aos="fade-left"  className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Owner</h2>
-    <p className='text-[20px] font-bold'>Saeed Rabee</p>
+        {/* Cards */}
+      <div className='pt-10 pb-10 bg-[#333333]'>
+        <div className='parent flex gap-5 justify-center items-center flex-wrap'>
+
+          {barbers.map((barber) => (
+            <div key={barber.id}
+              className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out 
+              hover:shadow-xl hover:scale-105 hover:bg-base-200">
+
+              <div className="card-body">
+                <h2 className="card-title text-2xl text-[#b8a269]">{barber.description}</h2>
+                <p className='text-[20px] font-bold'>{barber.title}</p>
     <div className='flex gap-3'>
 <a     id="social"       href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 <a     id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 <a     id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
     </div>
-  </div>
-  <figure>
-    <img className='bg-[#b8a269] self-center'
-      src="/src/assets/images/y554.jpg"
-      alt="Saeed Rabee" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Ahmed Adel</p>
-    <div className='flex gap-3'>
-<a    id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"       href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"       href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
 
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/4234.jpg"
-      alt="Shoes" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Alaa Mohamed</p>
-    <div className='flex gap-3'>
-<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+              </div>
 
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/42w35.jpg"
-      alt="Shoes" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Mohamed saeed</p>
-    <div className='flex gap-3'>
-<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+              <figure>
+                <img
+                  src={barber.image}
+                  alt={barber.name}
+                  className='w-full h-72 object-cover bg-[#b8a269] self-center'
+                />
+              </figure>
+            </div>
+          ))}
 
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/56346.jpg"
-      alt="" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Ramy Ahmed</p>
-  <div className='flex gap-3'>
-<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
+        </div>
+      </div>  {/*End of cards */}
 
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/452436.jpg"
-      alt="Shoes" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-left"  className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div  className="card-body">
-    <h2 className="card-title  text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Karem Mostafa</p>
-        <div className='flex gap-3'>
-<a    id="social"     href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a    id="social"     href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/452436.jpg"
-      alt="Shoes" />
-  </figure></div>
-{/*second perant card */}
-<div className=' parent flex gap-5 justify-center items-center sm:flex-wrap sm:-gap[5px] md:flex-wrap md:-gap[5px]'>
-<div data-aos-duration="1500"  data-aos="fade-right" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269] ">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Ahmed Adel</p>
-    <div className='flex gap-3'>
-<a   id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a   id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/46346.jpg"
-      alt="Shoes" />
-  </figure>
-</div>
-<div data-aos-duration="1500"  data-aos="fade-left" className="card bg-base-100 w-96 shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-base-200">
-  <div className="card-body">
-    <h2 className="card-title text-2xl text-[#b8a269]">Barber / Stylist</h2>
-    <p className='text-[20px] font-bold'>Hassan Ali</p>
-    <div className='flex gap-3'>
-<a   id="social"      href="https://www.facebook.com/SaeidRabieMensalon"><FaFacebook className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a   id="social"      href="https://www.instagram.com/saeidrabie_/?hl=ar"><FaInstagram className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-<a   id="social"      href="https://x.com/saeid_rabie?lang=ar"><FaXTwitter className='text-[#b8a269] font-bold mt-2 text-[20px]' /></a>
-    </div>
-  </div>
-  <figure>
-    <img
-      src="/src/assets/images/46346.jpg"
-      alt="Shoes" />
-  </figure>
-</div>
-</div>
- </div>
-     </div>
              {/* end WE CAN MAKE YOUR AWESOMENESS  */} 
       </div>
     </>

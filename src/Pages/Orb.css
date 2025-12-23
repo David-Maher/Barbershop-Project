@@ -1,0 +1,29 @@
+/* Orb Container */
+.orb-container {
+  width: 1000px;
+  height: 100vh;
+  position: relative;
+}
+
+.orb-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* خلفية الصفحة */
+.forha {
+  background: #000; /* خلفية سوداء */
+  overflow: hidden;
+  position: relative;
+}
+
+/* شكل الفورم */
+.forha form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.forha form input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Glow أزرق */
+}

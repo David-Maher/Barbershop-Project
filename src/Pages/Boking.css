@@ -1,5 +1,5 @@
 .Booking, .Hero {
-  background-image: url(src/assets/images/vintage-frame-salon-tools-wooden-table-2-min1.jpg);
+  background-image: url(public/images/vintage-frame-salon-tools-wooden-table-2-min1.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -11,8 +11,8 @@ html, body {
 }
 
 .rdtPicker {
-  background-color: #000 !important;
-  color: #555151 !important;
+  background-color:rgb(30, 30, 30) !important;
+  color: #020202 !important;
   border: none !important;
   border-radius: 8px;
   padding: 10px;
@@ -38,4 +38,19 @@ html, body {
 }
 .scroll{
  color: #b8a269; 
+}
+@media screen and (min-width:768px) {
+  .takwem{
+    max-width: 750px;
+  }
+}
+@media screen and (min-width:320px) {
+  .max-w-\[100px\] {
+    max-width: 350px;
+}
+}
+@media screen and (max-width:912px) {
+  .takwem{
+    max-width: 912px;
+  }
 }

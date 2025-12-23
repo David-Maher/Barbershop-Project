@@ -1,21 +1,22 @@
 .ContactUs{
-    background-image: url(src/assets/images/man-getting-his-hair-trimmed-with-trimmer4-min.jpg);
+    background-image: url(public/images/man-getting-his-hair-trimmed-with-trimmer4-min.webp);
      height: 85vh;
-     width: auto;
+     width: 100%;
      object-fit: cover;
      background-position: center;
     background-repeat: no-repeat;
+    background-position-y: 10%;
 }
  .sora2{
-        background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+        background-image: url(public/images/pexels-pixabay-90764.webp);
         height: 85vh;
     background-position-x: 85%;
     background-position-y: 10%;
-     width: auto;
+     width: 100%;
     }
     @media screen and (max-width:768px) {
  .sora2{
-    background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+    background-image: url(public/images/pexels-pixabay-90764.webp);
     height: 85vh;
     background-position: 15%;
      width: auto;
@@ -23,9 +24,34 @@
     }
     @media screen and (max-width:320px) {
  .sora2{
-    background-image: url(src/assets/images/pexels-pixabay-90764.jpg);
+    background-image: url(public/images/pexels-pixabay-90764.webp);
     height: 85vh;
     background-position: 25%;
-     width: auto;
+   width: 100%;
+   background-repeat: no-repeat;
     }       
     }
+    @media screen and (max-width:2560px) {
+      .ContactUs{
+    background-image: url(public/images/man-getting-his-hair-trimmed-with-trimmer4-min.webp);
+     height: 85vh;
+     width: 100%;
+    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+      background-position-y: 10%;
+
+}
+.sora2 {
+    background-image: url(public/images/pexels-pixabay-90764.webp);
+    height: 85vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center; /* أو زي ما تحب */
+    background-size: cover;
+      background-position-y: 10%;
+      background-position-x: 50%;
+}
+ 
+}

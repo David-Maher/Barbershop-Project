@@ -1,5 +1,5 @@
 .Prices{
-        background-image: url(src/assets/images/client-doing-hair-cut-2-min.jpg);
+        background-image: url(public/images/client-doing-hair-cut-2-min.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
@@ -8,7 +8,7 @@
 }
 @media screen and (max-width:425px) {
     .Prices{
-     background-image: url(src/assets/images/client-doing-hair-cut-2-min.jpg);
+     background-image: url(public/images/client-doing-hair-cut-2-min.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
@@ -16,4 +16,13 @@
      background-position-y: 15%;
      background-position-x: 25%;
 }
+}
+@media screen and (max-width:2560px) {
+    .Prices{
+height: 85vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+    }
 }

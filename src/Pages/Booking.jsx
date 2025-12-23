@@ -1,17 +1,20 @@
+// Booking.jsx
 import './Boking.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Datetime from 'react-datetime'
 import moment from 'moment'
 import 'react-datetime/css/react-datetime.css'
 import Swal from 'sweetalert2'
-import { collection, addDoc, getDocs } from 'firebase/firestore'
-import { db } from '../Firebase'
-import { Timestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, Timestamp, query, where } from 'firebase/firestore'
+import { db } from "../Firebase"
+import { Helmet } from 'react-helmet'
 
 export default function Booking() {
   const [selectedDate, setSelectedDate] = useState(moment())
   const [selectedBranch, setSelectedBranch] = useState(null)
   const [isName, setName] = useState('')
+  const [services, setServices] = useState([])     
+  const [selectedService, setSelectedService] = useState(null) 
 
   const Branches = [
     'Nasr City', 'New Cairo', 'El Sherouk', 'Mohandeseen',
@@ -19,66 +22,123 @@ export default function Booking() {
     'Abbas elakkad st', 'nasr city',
   ]
 
-    const generateBookingCode = async () => {
-const snapshot = await getDocs(collection(db, "bookings"));
-    const total = snapshot.size + 1;
-    return `BR-${total.toString().padStart(5, '0')}`;
-  };
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "services"))
+        const servicesList = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        setServices(servicesList)
+      } catch (error) {
+        console.error("Error fetching services:", error)
+      }
+    }
+    fetchServices()
+  }, [])
+
+  const generateBookingCode = async (selectedDate) => {
+    const startOfDay = moment(selectedDate).startOf("day").toDate()
+    const endOfDay = moment(selectedDate).endOf("day").toDate()
+
+    const snapshot = await getDocs(
+      query(
+        collection(db, "bookings"),
+        where("dateTime", ">=", startOfDay),
+        where("dateTime", "<=", endOfDay)
+      )
+    )
+
+    const totalToday = snapshot.size + 1
+    return `BR-${totalToday.toString().padStart(5, "0")}`
+  }
 
   const handleBooking = async () => {
-    if (!isName || !selectedBranch || !selectedDate) {
-      Swal.fire('تنبيه', 'يرجى ملء جميع البيانات قبل الحجز', 'warning');
-      return;
+    if (!isName || !selectedBranch || !selectedDate || !selectedService) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'error', 
+        text: 'Please fill in all details before booking',
+        timer: 1700
+      })
+      return
     }
 
     try {
-      const bookingCode = await generateBookingCode();
+      const bookingCode = await generateBookingCode(selectedDate)
 
       const bookingData = {
         bookingCode,
         customerName: isName,
         branch: selectedBranch,
-        dateTime: selectedDate.format('LL [at] HH:mm:ss'),
+        service: selectedService,
+        dateTime: Timestamp.fromDate(selectedDate.toDate()), 
         createdAt: Timestamp.now(),
-      };
+      }
 
-      await addDoc(collection(db, 'bookings'), bookingData);
+      await addDoc(collection(db, 'bookings'), bookingData)
 
       Swal.fire({
         icon: 'success',
-        title: 'تم الحجز بنجاح',
+        title: 'Booking Confirmed! ✅',
         html: `
-          <b>رقم الحجز:</b> ${bookingCode}<br/>
-          <b>الاسم:</b> ${isName}<br/>
-          <b>الفرع:</b> ${selectedBranch}<br/>
-          <b>الوقت:</b> ${selectedDate.format('hh:mm A - MMMM D, YYYY')}
+          <b>Booking Code:</b> ${bookingCode}<br/>
+          <b>Name:</b> ${isName}<br/>
+          <b>Branch:</b> ${selectedBranch}<br/>
+          <b>Service:</b> ${selectedService}<br/>
+          <b>Time:</b> ${selectedDate.format('hh:mm A - MMMM D, YYYY')}
         `,
-        confirmButtonText: 'تم',
-        timer:1700
-      });
+        confirmButtonText: 'Done',
+        timer: 1700
+      })
 
-      // ممكن تنظف البيانات بعد الحجز
-      setName('');
-      setSelectedBranch(null);
-      setSelectedDate(moment());
+      setName('')
+      setSelectedBranch(null)
+      setSelectedService(null)
+      setSelectedDate(moment())
     } catch (error) {
-      console.error('حدث خطأ أثناء الحجز:', error);
-      Swal.fire('خطأ', 'حدث خطأ أثناء إرسال الحجز، حاول مرة أخرى', 'error');
+      console.error('حدث خطأ أثناء الحجز:', error)
+      Swal.fire({
+        icon:'error',
+        title: 'error',
+        text:'An error occurred while submitting your reservation. Please try again.',
+        timer: 1500
+      })
     }
   }
+
   return (
-    <div className='Booking Hero flex text-center flex-col justify-center items-center min-h-screen bg-[#1e1e1e] p-6'>
+    <>
+    <Helmet>
+      <meta name="description" content="إحجز الأن موعد حلاقتك في 5 خطوات بسهولة" />
+      <title>إحجز الأن</title>
+      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="noindex, nofollow" />
+
+    </Helmet>
+    <div className='Booking Hero flex  text-center flex-col justify-center items-center min-h-screen bg-[#1e1e1e] p-6'>
       <img
-        className='h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-[#b8a269]'
-        src="/src/assets/images/y554.jpg"
+        className=' h-25 mt-35 w-25 md:h-100 md:w-150 rounded-full border-4 border-[#b8a269]'
+        src=" ../public/images/Saeed Rabee.webp"
         alt="profile"
       />
-      <p className='text-white text-3xl capitalize text-center mt-3'>saeed rabee</p>
       <p className='mt-5 text-white  text-4xl md:text-5xl'>Select a day and time</p>
 
-      <div className='mt-10 bg-[#1a1a1a] rounded-2xl p-6 shadow-2xl w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-8'>
+      <div className='mt-10 rounded-2xl   bg-black/40 backdrop-blur-md shadow-md p-6 w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-8'>
+        {/* الاسم */}
+        <div className=' takwem w-full flex justify-center flex-col max-w-[300px] text-white'>
+          <p className='text-[#b8a269] font-bold mb-2 capitalize'>your name</p>
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            value={isName}
+            onChange={(e) => setName(e.target.value)}
+            className=' placeholder:text-center w-full px-4 py-2 rounded-lg bg-[#2a2a2a] border border-[#b8a269] placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-[#b8a269]'
+          />
+        </div>
         {/* التقويم */}
-        <div className='w-full max-w-[300px] text-white'>
+        <div className='takwem  w-full max-w-[300px] text-white'>
           <p className='text-[#b8a269] font-bold mb-2 capitalize'>select date</p>
           <Datetime
             value={selectedDate}
@@ -91,7 +151,7 @@ const snapshot = await getDocs(collection(db, "bookings"));
         </div>
 
         {/* الوقت */}
-        <div className='w-full max-w-[300px] text-white'>
+        <div className='takwem  w-full max-w-[300px] text-white'>
           <p className='text-[#b8a269] font-bold mb-2 capitalize'>select time</p>
           <div className='overflow-y-scroll h-64 bg-[#2a2a2a] border border-[#b8a269] rounded-lg p-2 space-y-2'>
             {[...Array(15)].map((_, hour) => (
@@ -111,7 +171,7 @@ const snapshot = await getDocs(collection(db, "bookings"));
         </div>
 
         {/* الفروع */}
-        <div className='w-full max-w-[300px] text-white'>
+        <div className='takwem  w-full max-w-[300px] text-white'>
           <p className='text-[#b8a269] font-bold mb-2 capitalize'>select branch</p>
           <div className='overflow-y-scroll h-64 bg-[#2a2a2a] border border-[#b8a269] rounded-lg p-2 space-y-2'>
             {Branches.map((branch, index) => (
@@ -130,26 +190,36 @@ const snapshot = await getDocs(collection(db, "bookings"));
           </div>
         </div>
 
-        {/* الاسم */}
-        <div className='w-full flex justify-center flex-col max-w-[300px] text-white'>
-          <p className='text-[#b8a269] font-bold mb-2 capitalize'>your name</p>
-          <input
-            type="text"
-            placeholder="Enter Your Name"
-            value={isName}
-            onChange={(e) => setName(e.target.value)}
-            className='w-full px-4 py-2 rounded-lg bg-[#2a2a2a] border border-[#b8a269] placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-[#b8a269]'
-          />
+        {/* الخدمات */}
+        <div className='takwem w-full max-w-[300px] text-white'>
+          <p className='text-[#b8a269] font-bold mb-2 capitalize'>select service</p>
+          <div className='overflow-y-scroll h-64 bg-[#2a2a2a] border border-[#b8a269] rounded-lg p-2 space-y-2'>
+            {services.map((service) => (
+              <p
+                key={service.id}
+                onClick={() => setSelectedService(service.title)}
+                className={`cursor-pointer px-2 py-1 rounded text-center transition-all duration-200
+                  ${selectedService === service.title
+                    ? 'bg-[#b8a269] text-black font-bold'
+                    : 'hover:bg-[#444]'}
+                `}
+              >
+                {service.title}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
 
+      </div>
+      
       {/* زر الحجز */}
-<button
-  onClick={handleBooking}
-  className='mt-8 mx-auto bg-[#b8a269] text-black text-lg font-bold px-8 py-3 rounded-full shadow-md hover:bg-[#a49255] transition-all duration-300'
->
-  احجز الآن
-</button>
-     </div>
+      <button
+        onClick={handleBooking}
+        className='mt-8 mx-auto bg-[#b8a269] text-black text-lg font-bold px-8 py-3 rounded-full shadow-md hover:bg-[#a49255] transition-all duration-300'
+      >
+        Book Now
+      </button>
+    </div>
+    </>
   )
 }

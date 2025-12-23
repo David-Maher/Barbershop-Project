@@ -16,6 +16,32 @@ ul, li{
         background-color: #b8a269;
     }
 }
+/* حركة Slide من الأعلى + Fade-in */
+@keyframes slideFadeIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-fade {
+  animation: slideFadeIn 0.8s ease-out forwards;
+}
+
+/* Pulse خفيف للنص بعد ظهوره */
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 2s ease-in-out infinite;
+}
+
 @media screen and (max-width: 425px) {
     .navbar-end :link{
         width: 130px;
@@ -23,4 +49,46 @@ ul, li{
     .navbar-end{
         padding-right: 15px;
     }
+}
+@media screen and (min-width:356px) {
+    .bar{
+        padding-right: 65px;
+    }
+    .navbar-end{
+        gap: 12px;
+    }
+}
+@media screen and (min-width: 425px) {
+    .bar {
+        padding-right: 0px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .bar {
+        padding-right: 100px;
+    }   
+        .lin{
+        display: none;
+    }   
+
+}
+@media screen and (max-width: 320px){
+    .lin{
+        display: none;
+    }   
+}
+@media screen and (max-width:363px) {
+        .lin{
+        display: none;
+    }   
+}
+@media screen and (max-width:425px) {
+        .lin{
+        display: none;
+    }   
+}
+@media screen and (max-width:540px) {
+        .lin{
+        display: none;
+    }   
 }

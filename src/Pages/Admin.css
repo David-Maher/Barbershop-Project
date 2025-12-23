@@ -1,11 +1,3 @@
-.forha{
-    background-image: url(src/assets/images/vintage-paper-with-beard-shaping-salon-tools.jpg);
-    width: auto;
-    object-fit: cover;
-    background-repeat: no-repeat;
-    background-position-x: 56%;
-    background-position-y: 30%;
-    width: auto;
-
-
+ .log:hover{
+transition: 0.3s ease-out;
 }

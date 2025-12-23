@@ -1,6 +1,6 @@
    
    .Aboutus{
-    background-image: url(src/assets/images/weby.jpg);
+    background-image: url(public/images/weby.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
@@ -44,7 +44,7 @@
          width: 410px;
       }
       .Aboutus{
-    background-image: url(src/assets/images/weby.jpg);
+    background-image: url(public/images/weby.webp);
      height: 85vh;
      width: auto;
      object-fit: cover;
@@ -76,4 +76,14 @@
          align-items: center;
       }
 
+   }
+   @media screen and (max-width: 2560px) {
+         .Aboutus{
+    background-image: url(public/images/weby.webp);
+     height: 85vh;
+     width:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  }
    }
